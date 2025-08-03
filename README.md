@@ -1,32 +1,49 @@
-# MPB_media-ponderada-bimestre
-Calculadora de média ponderada para alunos com base em provas bimestrais. Projeto pensado para ajudar professores a organizar notas de forma simples.
+# GradeHelper_MPB_media-ponderada-bimestre
+Calculadora de média ponderada para alunos com base em Tarefas bimestrais. Projeto pensado para ajudar professores a organizar notas de forma simples.
 
 # 📘 Calculadora de Média Ponderada (5 Provas)
 
-Este projeto é uma calculadora simples desenvolvida em Python que simula o cálculo da média final de um aluno com base em **5 provas**, cada uma com 5 questões e peso fixo. A ideia surgiu pensando na minha mãe, que é professora, como uma forma de ajudar a organizar e visualizar melhor o desempenho dos alunos.
+Este projeto é uma calculadora simples desenvolvida em Python que simula o cálculo da média final de um aluno com baseado nas tarefas que foram aplicadas no bimestre (provas, trabalhos, etc.). A ideia surgiu pensando na minha mãe, que é professora, como uma forma de ajudar a organizar e visualizar melhor o desempenho dos alunos. Ela tem bastante trabalho de ficar montando planilhas e ficar anotando nome por nome de aluno, nota por nota, sala por sala, para depois lançar essas notas no sistema publico do governo que é bem lento.
 
 ---
 
-## ✨ Funcionalidades
+✨ Funcionalidades
+Recebe o nome e sobrenome do aluno
 
-- Recebe o **nome e sobrenome do aluno**
-- Permite o cadastro de **vários alunos**
-- Coleta os **acertos de cada uma das 5 provas**
-- Calcula:
-  - A **nota final** com base em pesos fixos
-  - O **aproveitamento (%)**
-  - A **situação final** (aprovado ou reprovado)
-- Mostra um resumo com os dados de todos os alunos
+Permite o cadastro de vários alunos
+
+Permite que o professor:
+
+Defina quantas tarefas foram aplicadas no bimestre
+
+Atribua um nome, peso e número de questões para cada tarefa
+
+Coleta os acertos de cada aluno em cada tarefa
+
+Calcula automaticamente:
+
+A nota proporcional de cada tarefa
+
+A nota final (soma ponderada das tarefas)
+
+O aproveitamento (%) com base no total de questões
+
+A situação final (Aprovado ou Reprovado)
+
+Mostra um resumo completo com todos os dados dos alunos cadastrados
 
 ---
 
 ## 🧮 Como funciona o cálculo?
 
-- Cada prova tem **5 questões** e vale **2 pontos**
-- Cada acerto vale **0.4 pontos** → 5 acertos = 2.0 pontos
-- A nota final é a **soma das notas das 5 provas**, com máximo de **10 pontos**
-- O aluno precisa de **mínimo 6 pontos** para ser aprovado
-- Aproveitamento é calculado com base no total de acertos sobre 25 questões
+* Você define **quantas tarefas foram aplicadas** no bimestre (provas, trabalhos, etc.)
+* Cada tarefa recebe um **nome**, um **peso** (valor da nota) e uma **quantidade de questões**
+* O professor informa **quantos acertos** o aluno teve em cada tarefa
+* A **nota de cada tarefa** é calculada proporcionalmente:
+  `nota = (acertos / total de questões) * peso`
+* A **nota final** do aluno é a **soma das notas das tarefas**
+* O aluno precisa de **mínimo 6 pontos** (em um total definido pelos pesos) para ser aprovado
+* O **aproveitamento (%)** é baseado no total de acertos sobre o total de questões de todas as tarefas
 
 ---
 
@@ -34,7 +51,7 @@ Este projeto é uma calculadora simples desenvolvida em Python que simula o cál
 
 1. Certifique-se de ter o Python instalado em sua máquina (ou use um ambiente online como o Google Colab).
 2. Este projeto ainda está **em desenvolvimento**, mas já pode ser **testado normalmente**.
-3. Execute o arquivo `.ipynb` em um ambiente como **Google Colab** ou **Jupyter Notebook** para interagir com o código e ver os resultados.
+3. Execute o arquivo `Grade_Helper_MPB.ipynb` em um ambiente como **Google Colab** ou **Jupyter Notebook** para interagir com o código e ver os resultados.
 4. Siga as instruções exibidas no terminal ou na célula do notebook.
 
 ---
@@ -42,19 +59,33 @@ Este projeto é uma calculadora simples desenvolvida em Python que simula o cál
 ## 💡 Exemplo de uso
 
 ```bash
-Quantos alunos deseja cadastrar? 2
+Quantas tarefas foram aplicadas no bimestre? 3
+Nome da tarefa 1: Prova
+Peso da tarefa 'Prova': 10.0
+Quantas questões teve a tarefa 'Prova'? 10
+Nome da tarefa 2: Redação
+Peso da tarefa 'Redação': 1.0
+Quantas questões teve a tarefa 'Redação'? 1
+Nome da tarefa 3: Trabalho
+Peso da tarefa 'Trabalho': 10
+Quantas questões teve a tarefa 'Trabalho'? 1
+Quantos alunos deseja cadastrar? 1
 
 === Cadastro do Aluno 1 ===
-Nome do Aluno: Ana
-Sobrenome do Aluno: Silva
-Prova 1 - Acertos: 5
-Prova 2 - Acertos: 4
-...
+Nome do Aluno: Jhonatam
+Sobrenome do Aluno: Santos Macumba
+Acertos na tarefa 'Prova' (máximo 10): 5
+Acertos na tarefa 'Redação' (máximo 1): 0.5
+Acertos na tarefa 'Trabalho' (máximo 1): 0.2
 
---- Resultado Final ---
-Aluno: Ana Silva
-Nota Final: 8.40 / 10.00
-Aproveitamento: 88.00%
+=== RESULTADOS FINAIS ===
+
+Aluno: Jhonatam Santos Macumba
+  - Prova: 5.0/10 acertos | Peso: 10.0 | Nota: 5.0
+  - Redação: 0.5/1 acertos | Peso: 1.0 | Nota: 0.5
+  - Trabalho: 0.2/1 acertos | Peso: 10.0 | Nota: 2.0
+Nota Final: 7.5 / 21.0
+Aproveitamento: 47.5%
 Situação: Aprovado
 ````
 
@@ -72,6 +103,8 @@ Situação: Aprovado
 calculadora-media/
 ├── calculadora_de_média_ponderada_(5_provas).ipynb
 ├── calculadora_de_média_ponderada_(5_provas).py
+├── Grade_Helper_MPB.ipynb
+├── grade_helper_mpb.py
 └── README.md
 ```
 
